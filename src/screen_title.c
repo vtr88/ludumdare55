@@ -9,9 +9,9 @@ Rectangle clipping;
 void InitTitleScreen(void) {
     framesCounter = 0;
     finishScreen = 0;
-    arrow = LoadTexture("/home/soth/Documentos/c/ludumdare53/src/resources/arrow.png");
+    arrow = LoadTexture("./resources/arrow.png");
     if(backgroundTitle.id == 0) {
-        backgroundTitle = LoadTexture("/home/soth/Documentos/c/ludumdare53/src/resources/farm.png");
+        backgroundTitle = LoadTexture("./resources/farm.png");
         Image image = LoadImageFromTexture(backgroundTitle);
         ImageColorGrayscale(&image);
         UnloadTexture(backgroundTitle);

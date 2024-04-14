@@ -11,10 +11,10 @@ void InitEndingScreen(void) {
     finishScreen = 0;
     if(win==0) {
         UnloadTexture(over);
-        over = LoadTexture("/home/soth/Documentos/c/ludumdare53/src/resources/over.png");
+        over = LoadTexture("./resources/over.png");
     } else {
         UnloadTexture(over);
-        over = LoadTexture("/home/soth/Documentos/c/ludumdare53/src/resources/win.png");
+        over = LoadTexture("./resources/win.png");
     }
 }
 

@@ -50,22 +50,22 @@ void desenhoVida() {
 }
 
 void InitGameplayScreen(void) {
-    waterTile = LoadTexture("/home/soth/Documentos/c/ludumdare53/src/resources/water.png");
-    grassTile = LoadTexture("/home/soth/Documentos/c/ludumdare53/src/resources/grass.png");
-    grassSheet = LoadTexture("/home/soth/Documentos/c/ludumdare53/src/resources/beira.png");
-    bolinha = LoadTexture("/home/soth/Documentos/c/ludumdare53/src/resources/bolinha.png");
-    coracao = LoadTexture("/home/soth/Documentos/c/ludumdare53/src/resources/heart.png");
-    character = LoadTexture("/home/soth/Documentos/c/ludumdare53/src/resources/fenku.png");
-    cdashing = LoadTexture("/home/soth/Documentos/c/ludumdare53/src/resources/frenkur.png");
-    papai = LoadTexture("/home/soth/Documentos/c/ludumdare53/src/resources/papai.png");
-    mamae = LoadTexture("/home/soth/Documentos/c/ludumdare53/src/resources/mamae.png");
-    pitaia = LoadTexture("/home/soth/Documentos/c/ludumdare53/src/resources/pitaia.png");
-    fxStep = LoadSound("/home/soth/Documentos/c/ludumdare53/src/resources/sound.wav");
-    fxBark = LoadSound("/home/soth/Documentos/c/ludumdare53/src/resources/bark.wav");
-    fxOneup = LoadSound("/home/soth/Documentos/c/ludumdare53/src/resources/oneup.wav");
-    fxMissed = LoadSound("/home/soth/Documentos/c/ludumdare53/src/resources/missed.wav");
-    fxDash = LoadSound("/home/soth/Documentos/c/ludumdare53/src/resources/dash.wav");
-    fxSummon = LoadSound("/home/soth/Documentos/c/ludumdare53/src/resources/summon.wav");
+    waterTile = LoadTexture("./resources/water.png");
+    grassTile = LoadTexture("./resources/grass.png");
+    grassSheet = LoadTexture("./resources/beira.png");
+    bolinha = LoadTexture("./resources/bolinha.png");
+    coracao = LoadTexture("./resources/heart.png");
+    character = LoadTexture("./resources/fenku.png");
+    cdashing = LoadTexture("./resources/frenkur.png");
+    papai = LoadTexture("./resources/papai.png");
+    mamae = LoadTexture("./resources/mamae.png");
+    pitaia = LoadTexture("./resources/pitaia.png");
+    fxStep = LoadSound("./resources/sound.wav");
+    fxBark = LoadSound("./resources/bark.wav");
+    fxOneup = LoadSound("./resources/oneup.wav");
+    fxMissed = LoadSound("./resources/missed.wav");
+    fxDash = LoadSound("./resources/dash.wav");
+    fxSummon = LoadSound("./resources/summon.wav");
     framesCounter = 0;
     finishScreen = 0;
     win = 0;

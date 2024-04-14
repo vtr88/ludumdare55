@@ -71,7 +71,7 @@ void UpdateLogoScreen(void)
 void DrawLogoScreen(void)
 {
     if(backgroundImage.id == 0) {
-        backgroundImage = LoadTexture("/home/soth/Documentos/c/ludumdare53/src/resources/farm.png");
+        backgroundImage = LoadTexture("./resources/farm.png");
     }
     
     DrawTextureEx(backgroundImage, (Vector2){ 0, 0 }, 0.0f, (800.0/backgroundImage.width + 480.0 / backgroundImage.height)/2, WHITE);
