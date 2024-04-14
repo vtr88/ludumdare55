@@ -28,8 +28,7 @@ void InitLogoScreen(void) {
     alpha = 1.0f;
 }
 
-void UpdateLogoScreen(void)
-{
+void UpdateLogoScreen(void) {
     if (state == 0) {
         framesCounter++;
         if (framesCounter == 80) {
@@ -68,8 +67,7 @@ void UpdateLogoScreen(void)
     }
 }
 
-void DrawLogoScreen(void)
-{
+void DrawLogoScreen(void) {
     if(backgroundImage.id == 0) {
         backgroundImage = LoadTexture("./resources/farm.png");
     }

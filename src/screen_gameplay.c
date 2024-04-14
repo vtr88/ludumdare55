@@ -10,7 +10,7 @@ float characterSpeed = 200.0f;
 bool papaiIsOn = false, pitaiaIsOn = false, mamaeIsOn = false;
 extern int win;
 
-//the dash
+//Dash variables
 bool isDashing = false;
 int dashDuration = 30;
 Vector2 dashDirection = {0, 0};
@@ -82,7 +82,7 @@ void UpdateGameplayScreen(void)
     Vector2 oldPosition = characterPosition;
     float deltaTime = GetFrameTime();
     
-    if (IsKeyPressed(KEY_C) && !isDashing) {
+    if (IsKeyPressed(KEY_L) && !isDashing) {
         isDashing = true;
         dashDirection = (Vector2){0, 0};
         dashCounter = 0;
@@ -176,7 +176,6 @@ void DrawGameplayScreen(void) {
         for (int x = waterStartX; x < waterStartX + waterWidth; x += waterTile.width) {
             DrawTexture(waterTile, x, y, WHITE);
         }
-        // Draw the left and right edge tiles for each row of the pool
         DrawTextureRec(grassSheet, (Rectangle){spriteWidth * 3, 0, spriteWidth, spriteHeight},
                        (Vector2){waterStartX - spriteWidth, y}, WHITE); // Left
         DrawTextureRec(grassSheet, (Rectangle){spriteWidth, 0, spriteWidth, spriteHeight},
@@ -213,7 +212,7 @@ void DrawGameplayScreen(void) {
 
     if(score == 0) {
         DrawText("A S D W PARA SE MOVER!", ((GetScreenWidth()/2)-115), GetScreenHeight()/2, 20, WHITE);
-        DrawText("C PARA DAR UM SPRINT!", ((GetScreenWidth()/2)-115), (GetScreenHeight()/2)-30, 20, WHITE);
+        DrawText("L PARA DAR UM SPRINT!", ((GetScreenWidth()/2)-115), (GetScreenHeight()/2)-30, 20, WHITE);
     }
     if(score>10 && score<=20) {
         if(!papaiIsOn) {
@@ -254,9 +253,16 @@ void UnloadGameplayScreen(void) {
     UnloadTexture(grassSheet);
     UnloadTexture(bolinha);
     UnloadTexture(character);
+    UnloadTexture(cdashing);
+    UnloadTexture(papai);
+    UnloadTexture(mamae);
+    UnloadTexture(pitaia);
     UnloadSound(fxStep);
     UnloadSound(fxBark);
     UnloadSound(fxOneup);
+    UnloadSound(fxMissed);
+    UnloadSound(fxDash);
+    UnloadSound(fxSummon);
 }
 
 int FinishGameplayScreen(void) {

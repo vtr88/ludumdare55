@@ -6,27 +6,22 @@ Font font = { 0 };
 Music music = { 0 }, gameplaym = {0};
 Sound fxCoin = { 0 };
 
-// Local Variables Definition (local to this module)
 static const int screenWidth = 800;
 static const int screenHeight = 450;
-
-// Required variables to manage screen transitions (fade-in, fade-out)
 static float transAlpha = 0.0f;
 static bool onTransition = false;
 static bool transFadeOut = false;
 static int transFromScreen = -1;
 static GameScreen transToScreen = UNKNOWN;
 
-// Local Functions Declaration
-static void TransitionToScreen(int screen); // Request transition to next screen
-static void UpdateTransition(void);         // Update transition effect
-static void DrawTransition(void);           // Draw transition effect (full-screen rectangle)
-static void UpdateDrawFrame(void);          // Update and draw one frame
+static void TransitionToScreen(int screen);
+static void UpdateTransition(void);
+static void DrawTransition(void);
+static void UpdateDrawFrame(void);
 
-int main(void)
-{
+int main(void) {
     InitWindow(screenWidth, screenHeight, "frenku e as mizads.");
-    //ToggleFullscreen();
+    ToggleFullscreen();
     InitAudioDevice();
     font = LoadFont("./resources/mecha.png");
     music = LoadMusicStream("./resources/ambient.ogg");
@@ -39,17 +34,14 @@ int main(void)
     currentScreen = LOGO;
     InitLogoScreen();
     SetTargetFPS(60);
-
     Image icon = LoadImage("./resources/icon16.png"); 
     SetWindowIcon(icon);
     
-    while (!WindowShouldClose())
-    {
+    while (!WindowShouldClose()) {
         UpdateDrawFrame();
     }
     
-    switch (currentScreen)
-    {
+    switch (currentScreen) {
         case LOGO: UnloadLogoScreen(); break;
         case TITLE: UnloadTitleScreen(); break;
         case GAMEPLAY: UnloadGameplayScreen(); break;
@@ -65,8 +57,7 @@ int main(void)
     return 0;
 }
 
-static void TransitionToScreen(GameScreen screen)
-{
+static void TransitionToScreen(GameScreen screen) {
     onTransition = true;
     transFadeOut = false;
     transFromScreen = currentScreen;
@@ -74,24 +65,19 @@ static void TransitionToScreen(GameScreen screen)
     transAlpha = 0.0f;
 }
 
-static void UpdateTransition(void)
-{
-    if (!transFadeOut)
-    {
+static void UpdateTransition(void) {
+    if (!transFadeOut) {
         transAlpha += 0.05f;
-        if (transAlpha > 1.01f)
-        {
+        if (transAlpha > 1.01f) {
             transAlpha = 1.0f;
-            switch (transFromScreen)
-            {
+            switch (transFromScreen) {
                 case LOGO: UnloadLogoScreen(); break;
                 case TITLE: UnloadTitleScreen(); break;
                 case GAMEPLAY: UnloadGameplayScreen(); break;
                 case ENDING: UnloadEndingScreen(); break;
                 default: break;
             }
-            switch (transToScreen)
-            {
+            switch (transToScreen) {
                 case LOGO: InitLogoScreen(); break;
                 case TITLE: InitTitleScreen(); break;
                 case GAMEPLAY: InitGameplayScreen(); break;
@@ -102,12 +88,9 @@ static void UpdateTransition(void)
             transFadeOut = true;
         }
     }
-    else
-    {
+    else {
         transAlpha -= 0.02f;
-
-        if (transAlpha < -0.01f)
-        {
+        if (transAlpha < -0.01f) {
             transAlpha = 0.0f;
             transFadeOut = false;
             onTransition = false;
@@ -117,42 +100,31 @@ static void UpdateTransition(void)
     }
 }
 
-static void DrawTransition(void)
-{
+static void DrawTransition(void) {
     DrawRectangle(0, 0, GetScreenWidth(), GetScreenHeight(), Fade(BLACK, transAlpha));
 }
 
-static void UpdateDrawFrame(void)
-{
+static void UpdateDrawFrame(void) {
     UpdateMusicStream(music);
     UpdateMusicStream(gameplaym);
 
-    if (!onTransition)
-    {
-        switch(currentScreen)
-        {
-            case LOGO:
-            {
+    if (!onTransition) {
+        switch(currentScreen) {
+            case LOGO: {
                 UpdateLogoScreen();
                 if (FinishLogoScreen()) TransitionToScreen(TITLE);
             } break;
-            case TITLE:
-            {
+            case TITLE: {
                 UpdateTitleScreen();
                 if (FinishTitleScreen() == 2) TransitionToScreen(GAMEPLAY);
             } break;
-            case GAMEPLAY:
-            {
+            case GAMEPLAY: {
                 UpdateGameplayScreen();
                 if (FinishGameplayScreen() == 1) TransitionToScreen(ENDING);
-                //else if (FinishGameplayScreen() == 2) TransitionToScreen(TITLE);
             } break;
-            case ENDING:
-            {
+            case ENDING: {
                 UpdateEndingScreen();
-
                 if (FinishEndingScreen() == 1) TransitionToScreen(TITLE);
-
             } break;
             default: break;
         }
@@ -164,10 +136,10 @@ static void UpdateDrawFrame(void)
     if (IsKeyPressed(KEY_F11)) {
         ToggleFullscreen();
     }
+
     ClearBackground(RAYWHITE);
 
-    switch(currentScreen)
-    {
+    switch(currentScreen) {
         case LOGO: DrawLogoScreen(); break;
         case TITLE: DrawTitleScreen(); break;
         case GAMEPLAY: 
