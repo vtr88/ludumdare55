@@ -82,7 +82,7 @@ void UpdateGameplayScreen(void)
     Vector2 oldPosition = characterPosition;
     float deltaTime = GetFrameTime();
     
-    if (IsKeyPressed(KEY_SPACE) && !isDashing) {
+    if (IsKeyPressed(KEY_C) && !isDashing) {
         isDashing = true;
         dashDirection = (Vector2){0, 0};
         dashCounter = 0;
@@ -213,7 +213,7 @@ void DrawGameplayScreen(void) {
 
     if(score == 0) {
         DrawText("A S D W PARA SE MOVER!", ((GetScreenWidth()/2)-115), GetScreenHeight()/2, 20, WHITE);
-        DrawText("BARRA DE ESPAÇO PARA SPRINT!", ((GetScreenWidth()/2)-115), (GetScreenHeight()/2)-30, 20, WHITE);
+        DrawText("C PARA DAR UM SPRINT!", ((GetScreenWidth()/2)-115), (GetScreenHeight()/2)-30, 20, WHITE);
     }
     if(score>10 && score<=20) {
         if(!papaiIsOn) {
